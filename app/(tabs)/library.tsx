@@ -1,12 +1,9 @@
 import {Text, View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
+import {RootStackScreenProps, Routes} from '../../routes.types';
 
-const Library = () => {
-  return (
-    <View>
-      <Text>Library</Text>
-    </View>
-  );
+const Library: FC<RootStackScreenProps<Routes.LIBRARY>> = () => {
+  return <View />;
 };
 
 export default Library;

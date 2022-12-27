@@ -5,7 +5,7 @@ import React from 'react';
 
 export const CustomBottomTabBar = (props: BottomTabBarProps) => (
   <View>
-    <FloatingPlayer />
+    <FloatingPlayer {...props} />
     <BottomTabBar {...props} />
   </View>
 );

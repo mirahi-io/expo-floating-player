@@ -1,22 +1,18 @@
 import React, {FC} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
-import {useLink} from 'expo-router';
 import {RootStackScreenProps, Routes} from '../../routes.types';
-import {songs} from '../../songs';
+import {useInitPlayer} from '../../player.utils';
 
-const HomeScreen: FC<RootStackScreenProps<Routes.HOME>> = () => {
-  const {push} = useLink();
+const HomeScreen: FC<RootStackScreenProps<Routes.HOME>> = ({
+  navigation: {navigate},
+}) => {
+  useInitPlayer();
 
   return (
     <View style={styles.centered_horizontal}>
       <Button
         title="Open player"
-        onPress={() =>
-          push({
-            pathname: 'player',
-            params: {index: 0, queue: songs},
-          })
-        }
+        onPress={() => navigate(Routes.PLAYER, {index: 0})}
       />
     </View>
   );

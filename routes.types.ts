@@ -1,15 +1,15 @@
 import {NativeStackScreenProps} from 'react-native-screens/native-stack';
 
 export enum Routes {
-  ROOT = 'root',
+  HOME = 'index',
   PLAYER = 'player',
-  HOME = 'home',
+  LIBRARY = 'library',
 }
 
 export type RootStackParamList = {
-  [Routes.ROOT]: undefined;
-  [Routes.PLAYER]: {index: number; position?: number; queue: any[]};
   [Routes.HOME]: undefined;
+  [Routes.PLAYER]: {index: number; position?: number};
+  [Routes.LIBRARY]: undefined;
 };
 
 export type RootStackScreenProps<T extends Routes> = NativeStackScreenProps<

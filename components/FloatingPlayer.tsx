@@ -1,10 +1,11 @@
-import {Alert, Button, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Button, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Slider from '@react-native-community/slider';
-import {usePlayerControls} from '../../../services/player/player.utils';
+import {usePlayerControls} from '../player.utils';
+import {Routes} from '../routes.types';
+import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
-export const FloatingPlayer = () => {
-  // const {navigate} = useNavigation<NavigationProp<RootStackParamList>>();
+export const FloatingPlayer = ({navigation: {navigate}}: BottomTabBarProps) => {
   const {
     currentTrackIndex,
     currentTrack,
@@ -18,14 +19,12 @@ export const FloatingPlayer = () => {
   const {artist, title} = currentTrack;
 
   const playerPressHandler = () => {
-    Alert.alert('Open player');
+    navigate(Routes.PLAYER, {
+      index:
+        currentTrackIndex && currentTrackIndex >= 0 ? currentTrackIndex : 0,
+      position: position,
+    });
   };
-  // navigate(Routes.PLAYER, {
-  //   index:
-  //     currentTrackIndex && currentTrackIndex >= 0 ? currentTrackIndex : 0,
-  //   position: position,
-  //   queue: songs,
-  // });
 
   return (
     <Pressable onPress={playerPressHandler}>
