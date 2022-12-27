@@ -18,17 +18,37 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mirahi.floatingPlayer"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.mirahi.floatingPlayer"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "scheme": "expo-floating-player"
+    "scheme": "expo-floating-player",
+    "extra": {
+      "eas": {
+        "projectId": "8c631569-90dd-4dfa-b70c-678499d28672"
+      }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 33,
+            "targetSdkVersion": 31,
+            "buildToolsVersion": "31.0.0",
+            "kotlinVersion": "1.7.20"
+          }
+        }
+      ]
+    ]
   }
 }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
+    "@react-native-community/slider": "4.2.4",
     "expo": "~47.0.9",
     "expo-constants": "~14.0.2",
     "expo-linking": "~3.3.0",
@@ -20,7 +21,10 @@
     "react-native": "0.70.5",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
-    "react-native-web": "~0.18.9"
+    "react-native-track-player": "^3.2.0",
+    "react-native-web": "~0.18.9",
+    "expo-dev-client": "~2.0.1",
+    "expo-build-properties": "~0.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
