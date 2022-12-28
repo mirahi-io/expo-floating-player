@@ -24,7 +24,8 @@
     "react-native-track-player": "^3.2.0",
     "react-native-web": "~0.18.9",
     "expo-dev-client": "~2.0.1",
-    "expo-build-properties": "~0.4.1"
+    "expo-build-properties": "~0.4.1",
+    "@expo/vector-icons": "^13.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

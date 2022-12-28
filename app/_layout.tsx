@@ -6,11 +6,15 @@ import {useInitPlayer} from '../player.utils';
 export default function Layout() {
   useInitPlayer();
   return (
-    <Stack>
+    <Stack screenOptions={{contentStyle: {backgroundColor: '#FFF'}}}>
       <Stack.Screen name="(tabs)" options={{headerShown: false}} />
       <Stack.Screen
         name={Routes.PLAYER}
-        options={{title: 'Player', presentation: 'modal'}}
+        options={{
+          title: 'Player',
+          presentation: 'modal',
+          headerTintColor: '#0044C3',
+        }}
       />
     </Stack>
   );

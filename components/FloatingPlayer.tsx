@@ -1,9 +1,11 @@
-import {Button, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
 import React from 'react';
 import Slider from '@react-native-community/slider';
 import {usePlayerControls} from '../player.utils';
 import {Routes} from '../routes.types';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
+import {MaterialIcons} from '@expo/vector-icons';
+import {playerStyles} from './component.styles';
 
 export const FloatingPlayer = ({navigation: {navigate}}: BottomTabBarProps) => {
   const {
@@ -18,38 +20,36 @@ export const FloatingPlayer = ({navigation: {navigate}}: BottomTabBarProps) => {
 
   const {artist, title} = currentTrack;
 
-  const playerPressHandler = () => {
+  const playerPressHandler = () =>
     navigate(Routes.PLAYER, {
       index:
         currentTrackIndex && currentTrackIndex >= 0 ? currentTrackIndex : 0,
       position: position,
     });
-  };
 
   return (
     <Pressable onPress={playerPressHandler}>
-      <View style={styles.container}>
-        <View style={styles.centered_row_space_between}>
-          <Text>
+      <View style={playerStyles.floating_container}>
+        <View style={playerStyles.centered_row_space_between}>
+          <Text style={playerStyles.title_minimal}>
             {title} - {artist}
           </Text>
-          <Button title={isPlaying ? 'play' : 'pause'} onPress={startTrack} />
+          <MaterialIcons
+            style={playerStyles.icons_minimal}
+            name={isPlaying ? 'play-arrow' : 'pause'}
+            size={40}
+            onPress={startTrack}
+          />
         </View>
-        <Slider maximumValue={duration} minimumValue={0} value={position} />
+        <Slider
+          minimumTrackTintColor="#FFF"
+          maximumTrackTintColor="#BAC0CA"
+          thumbTintColor="#FFF"
+          maximumValue={duration}
+          minimumValue={0}
+          value={position}
+        />
       </View>
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  centered_row_space_between: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  container: {
-    backgroundColor: '#cecece',
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-  },
-});

@@ -1,7 +1,9 @@
-import {Button, StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import React, {FC} from 'react';
 import Slider from '@react-native-community/slider';
 import {Controls as ControlProps} from '../player.utils';
+import {MaterialIcons} from '@expo/vector-icons';
+import {playerStyles} from './component.styles';
 
 export const Controls: FC<ControlProps> = ({
   startTrack,
@@ -13,20 +15,34 @@ export const Controls: FC<ControlProps> = ({
 }) => {
   return (
     <View>
-      <Slider maximumValue={duration} minimumValue={0} value={position} />
-      <View style={styles.row_spaced_evenly}>
-        <Button title="prev" onPress={skipToPreviousTrack} />
-        <Button title={isPlaying ? 'play' : 'pause'} onPress={startTrack} />
-        <Button title="next" onPress={skipToNextTrack} />
+      <Slider
+        minimumTrackTintColor="#F73655"
+        thumbTintColor="#F73655"
+        maximumTrackTintColor="#BAC0CA"
+        maximumValue={duration}
+        minimumValue={0}
+        value={position}
+      />
+      <View style={playerStyles.row_spaced_evenly}>
+        <MaterialIcons
+          style={playerStyles.icons}
+          name="skip-previous"
+          onPress={skipToPreviousTrack}
+          size={64}
+        />
+        <MaterialIcons
+          style={playerStyles.icons}
+          name={isPlaying ? 'play-arrow' : 'pause'}
+          size={64}
+          onPress={startTrack}
+        />
+        <MaterialIcons
+          style={playerStyles.icons}
+          name="skip-next"
+          onPress={skipToNextTrack}
+          size={64}
+        />
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  row_spaced_evenly: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    flexDirection: 'row',
-  },
-});
