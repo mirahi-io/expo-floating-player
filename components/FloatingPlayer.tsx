@@ -28,28 +28,31 @@ export const FloatingPlayer = ({navigation: {navigate}}: BottomTabBarProps) => {
     });
 
   return (
-    <Pressable onPress={playerPressHandler}>
-      <View style={playerStyles.floating_container}>
-        <View style={playerStyles.centered_row_space_between}>
-          <Text style={playerStyles.title_minimal}>
-            {title} - {artist}
-          </Text>
-          <MaterialIcons
-            style={playerStyles.icons_minimal}
-            name={isPlaying ? 'play-arrow' : 'pause'}
-            size={40}
-            onPress={startTrack}
-          />
-        </View>
-        <Slider
-          minimumTrackTintColor="#FFF"
-          maximumTrackTintColor="#BAC0CA"
-          thumbTintColor="#FFF"
-          maximumValue={duration}
-          minimumValue={0}
-          value={position}
+    <View style={playerStyles.floating_container}>
+      <Pressable
+        style={playerStyles.centered_row_space_between}
+        onPress={playerPressHandler}
+        testID="floating-player-container">
+        <Text style={playerStyles.title_minimal}>
+          {title} - {artist}
+        </Text>
+        <MaterialIcons
+          // label necessary for Maestro to detect the text on the floating player
+          accessibilityLabel={isPlaying ? 'play-arrow' : 'pause'}
+          style={playerStyles.icons_minimal}
+          name={isPlaying ? 'play-arrow' : 'pause'}
+          size={40}
+          onPress={startTrack}
         />
-      </View>
-    </Pressable>
+      </Pressable>
+      <Slider
+        minimumTrackTintColor="#FFF"
+        maximumTrackTintColor="#BAC0CA"
+        thumbTintColor="#FFF"
+        maximumValue={duration}
+        minimumValue={0}
+        value={position}
+      />
+    </View>
   );
 };

@@ -1,0 +1,9 @@
+appId: com.mirahi.floatingPlayer
+
+---
+
+- tapOn: "OPEN PLAYER"
+- assertVisible: "Player"
+- swipe:
+    start: 100, 200
+    end: 300, 800

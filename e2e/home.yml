@@ -1,0 +1,7 @@
+appId: com.mirahi.floatingPlayer
+
+---
+
+- assertVisible: "Home, tab, 1 of 2"
+- assertVisible: "Library, tab, 2 of 2"
+- assertVisible: "Home"

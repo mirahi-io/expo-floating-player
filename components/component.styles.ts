@@ -22,10 +22,10 @@ export const playerStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  floating_container_pressed: {
+    backgroundColor: '#F73655E5',
+  },
   floating_container: {
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: '#F73655',
     backgroundColor: '#F73655',
     paddingHorizontal: 8,
     paddingVertical: 8,

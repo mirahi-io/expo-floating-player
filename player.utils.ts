@@ -9,10 +9,10 @@ import TrackPlayer, {
 
 export const useInitPlayer = () => {
   useEffect(() => {
-    TrackPlayer.setupPlayer();
+    TrackPlayer.setupPlayer().catch(() => console.log('todo: handle errors'));
 
     return () => {
-      TrackPlayer.reset();
+      TrackPlayer.reset().catch(() => console.log('todo: handle errors'));
     };
   }, []);
 };
