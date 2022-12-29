@@ -1,0 +1,11 @@
+appId: com.mirahi.floatingPlayer
+
+---
+
+- tapOn:
+    text: "Library"
+    rightOf: "Home"
+- assertVisible:
+    text: "Library"
+    index: 0
+- assertVisible: "0001 - bigsoundbank"

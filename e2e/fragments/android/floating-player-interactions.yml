@@ -1,0 +1,9 @@
+appId: com.mirahi.floatingPlayer
+
+---
+
+- assertVisible: "0001 - bigsoundbank"
+- tapOn:
+    id: "floating-player-container"
+- assertVisible: "Player"
+- back

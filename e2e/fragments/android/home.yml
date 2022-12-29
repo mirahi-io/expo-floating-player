@@ -1,0 +1,13 @@
+appId: com.mirahi.floatingPlayer
+
+---
+
+- assertVisible:
+    text: "Home"
+    leftOf: "Library"
+- assertVisible:
+    text: "Library"
+    rightOf: "Home"
+- assertVisible:
+    text: "Home"
+    index: 0

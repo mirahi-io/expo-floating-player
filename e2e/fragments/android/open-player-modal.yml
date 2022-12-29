@@ -1,0 +1,7 @@
+appId: com.mirahi.floatingPlayer
+
+---
+
+- tapOn: "OPEN PLAYER"
+- assertVisible: "Player"
+- back

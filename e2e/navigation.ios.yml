@@ -1,0 +1,17 @@
+appId: com.mirahi.floatingPlayer
+
+---
+
+- openLink: "exp+expo-floating-player://expo-development-client/?url=http://127.0.0.1:8081"
+
+# Check tabs exist and current tab is correct
+- runFlow: "fragments/ios/home.yml"
+
+# Open the player modal, check content and close the modal
+- runFlow: "fragments/ios/open-player-modal.yml"
+
+# Open modal from floating player
+- runFlow: "fragments/ios/floating-player-interactions.yml"
+
+## Navigate to library tab and check floating player is present
+- runFlow: "fragments/ios/library.yml"
