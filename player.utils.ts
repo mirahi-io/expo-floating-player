@@ -6,13 +6,20 @@ import TrackPlayer, {
   useProgress,
   useTrackPlayerEvents,
 } from 'react-native-track-player';
+import {songs} from './songs';
 
 export const useInitPlayer = () => {
   useEffect(() => {
     TrackPlayer.setupPlayer().catch(() => console.log('todo: handle errors'));
 
     return () => {
-      TrackPlayer.reset().catch(() => console.log('todo: handle errors'));
+      TrackPlayer.isServiceRunning().then(running => {
+        if (running) {
+          return TrackPlayer.reset().catch(() =>
+            console.log('todo: handle errors'),
+          );
+        }
+      });
     };
   }, []);
 };
@@ -37,6 +44,19 @@ export const usePlayerControls = (): UsePlayerControlsResponse => {
   const [playerState, setPlayerState] = useState<State>();
   const [currentTrack, setCurrentTrack] = useState<Track>();
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>();
+
+  useEffect(() => {
+    TrackPlayer.isServiceRunning().then(running => {
+      if (running && !currentTrack) {
+        TrackPlayer.getCurrentTrack().then(index => {
+          if (index != null) {
+            setCurrentTrackIndex(index);
+            setCurrentTrack(songs[index]);
+          }
+        });
+      }
+    });
+  }, [currentTrack]);
 
   useTrackPlayerEvents(
     [Event.PlaybackTrackChanged, Event.PlaybackState],
